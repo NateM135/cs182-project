@@ -59,6 +59,9 @@ streamFile(const char *filename) {
         if (ret != 0) {
             fprintf(stderr, "%s : failed to parse\n", filename);
         }
+        else {
+            printf("Successfully Validated XML Syntax!\n");
+        }
     } else {
         fprintf(stderr, "Unable to open %s\n", filename);
     }
