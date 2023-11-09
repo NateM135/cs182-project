@@ -4,7 +4,7 @@
 
 ```
 sudo apt install libxml2-dev
-gcc example_reader_validator.c -I/usr/include/libxml2 -lxml2
+gcc validate.c -I/usr/include/libxml2 -lxml2
 ./a.out
 ```
 
