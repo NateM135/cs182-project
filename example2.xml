@@ -1,11 +1,14 @@
-<doc>
-    <clean> </clean>
-    <dirty> A B </dirty>
-    <mixed>
-        A
-        <clean> </clean>
-        B
-        <dirty> A B </dirty>
-        C
-    </mixed>
-</doc>
+<class>
+    <assignment>
+        <name>Homework #1</name>
+        <percentage>20%</percentage>
+    </assignment>
+    <assignment>
+        <name>Homework #2</name>
+        <percentage>20%</percentage>
+    </assignment>
+    <assignment>
+        <name>Final</name>
+        <percentage>60%</percentage>
+    </assignment>
+</class>

@@ -5,52 +5,48 @@ An example of a valid XML on a single line is:
 """,
 
 "PROMPT TWO":"""
-Write a well-formed XML document that represents information about a book. The XML should include the following elements:
+Write a well-formed XML document that represents information about a game. The XML should include the following elements:
 
-<book> - representing the entire book.
-   - <title> - the title of the book.
-   - <author> - the author of the book.
-   - <published_year> - the year the book was published.
+<game> represents the entire game.
+<name> is the title of the game.
+<year_released> is the year the game was released.
+<genre> represents the genre of the game.
+<creator> represents the creator of the game.
 
 Here is an example output:
 
-<book><title>The Adventures of GPT-2</title> <author>AI Writer</author> <published_year>2023</published_year> </book>
+<game><name>Minecraft</name><year_released>2011</year_released><genre>Survival</genre><creator>Notch</creator></game>
 
 Another example of an XML like this where the elements are properly nested, and include sample data within each element is:
 """,
 
 "PROMPT THREE":"""
-Write a well-formed XML document that represents information about a book. The XML should include the following elements:
+Here is an example of a XML document that represents information about a game:
 
-Here is an example output:
-
-<book><title>The Adventures of GPT-2</title> <author>AI Writer</author> <published_year>2023</published_year> </book>
+<game><name>Minecraft</name><year_released>2011</year_released><genre>Survival</genre><creator>Notch</creator></game>
 
 Another example of an XML like this where the elements are properly nested, and include sample data within each element is:
 """,
 
 "PROMPT FOUR":"""
-Write a well-formed XML document that represents information about a schedule. Each schedule contains a lecture element withe following elements.
+Write a well-formed XML document that represents information about a class. The XML should include the following elements:
 
-<schedule> - representing the entire schedule.
-   - <lecture> - the title of the lecture.
-   - <topic> - the topic of the lecture
-   - <instructor> - the name of the instructor
-   - <time> - the week # for when this lecture takes place
+<class> represents the entire class.
+<assignment> represents an assignment object that contains a <name> element and <percentage> element.
+<name> represents the name of the assignment.
+<percentage> represents the percentage weight of the assignment.
 
 Here is an example output:
 
-<schedule><lecture><topic>Testing Overview</topic><instructor>Qian Zhang</instructor><time>Week 1</time></lecture><lecture><topic>Input Space Partitioning</topic><instructor>Qian Zhang</instructor><time>Week 2</time></lecture><lecture><topic>Test Coverage</topic><instructor>Qian Zhang</instructor><time>Week 3</time></lecture></schedule>
+<class><assignment><name>Homework #1</name><percentage>20%</percentage></assignment><assignment><name>Homework #2</name><percentage>20%</percentage></assignment><assignment><name>Final</name><percentage>60%</percentage></assignment></class>
 
 Another example of an XML like this where the elements are properly nested, and include sample data within each element is:
 """,
 
 "PROMPT FIVE":"""
-Write a well-formed XML document that represents information about a schedule. 
+Here is an example of a XML document that represents information about a class.:
 
-Here is an example output:
-
-<schedule><lecture><topic>Testing Overview</topic><instructor>Qian Zhang</instructor><time>Week 1</time></lecture><lecture><topic>Input Space Partitioning</topic><instructor>Qian Zhang</instructor><time>Week 2</time></lecture><lecture><topic>Test Coverage</topic><instructor>Qian Zhang</instructor><time>Week 3</time></lecture></schedule>
+<class><assignment><name>Homework #1</name><percentage>20%</percentage></assignment><assignment><name>Homework #2</name><percentage>20%</percentage></assignment><assignment><name>Final</name><percentage>60%</percentage></assignment></class>
 
 Another example of an XML like this where the elements are properly nested, and include sample data within each element is:
 """
