@@ -2,3 +2,4 @@ venv/
 a.out
 generated_text.xml
 output_graph.png
+promp*.xml
