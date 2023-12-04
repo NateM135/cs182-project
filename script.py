@@ -6,10 +6,10 @@ import random
 
 from prompts import PROMPTS
 
-OUTPUT_FILENAME = "generated_text"
+OUTPUT_FILENAME_PREFIX = "generated_text"
 SEED = random.getrandbits(32)
 MAX_ADDITIONAL_RESPONSE_LENGTH = 50
-NUM_RESP_PER_PROMPT = 3
+NUM_RESP_PER_PROMPT = 5
 VALIDATION_BINARY_NAME = "a.out"
 OUTPUT_GRAPH_FILEAME = "output_graph.png"
 
@@ -22,8 +22,8 @@ objects = tuple([x.replace(" ", "\n") for x in PROMPTS.keys()])
 y_pos = np.arange(len(objects))
 performance = []
 
-
-results_by_prompt = {}  # Dictionary to store results for each prompt
+# Dictionary to store results for each prompt
+results_by_prompt = {}
 
 for prompt_id, (prompt_key, prompt_text) in enumerate(PROMPTS.items(), start=1):
     print(prompt_text)
@@ -31,14 +31,17 @@ for prompt_id, (prompt_key, prompt_text) in enumerate(PROMPTS.items(), start=1):
     x = generator(prompt_text, max_length=len(prompt_text) + MAX_ADDITIONAL_RESPONSE_LENGTH, num_return_sequences=NUM_RESP_PER_PROMPT, num_beams=1)
 
     for i, response in enumerate(x):
-        extracted_xml = response["generated_text"][len(prompt_text):].split("\n")[1]  # Extract the second line
-        fileoutput = f"prompt{prompt_id}_{OUTPUT_FILENAME}_{i+1}.xml"  # Added underscore before the index
+        # Extract the second line, prompts are formed for generated xml to be here
+        extracted_xml = response["generated_text"][len(prompt_text):].split("\n")[1]
+        # Generate filename 
+        iteration_output_filename = f"prompt{prompt_id}_{OUTPUT_FILENAME_PREFIX}_{i+1}.xml"
 
-
-        with open(fileoutput, "w") as file:
+        # Save generated text to local system
+        with open(iteration_output_filename, "w") as file:
             file.write(extracted_xml)
 
-        status = os.popen(f"./{VALIDATION_BINARY_NAME} {fileoutput}").read()
+        # Call binary that checks XML validity with libxml
+        status = os.popen(f"./{VALIDATION_BINARY_NAME} {iteration_output_filename}").read()
         if status.strip() == "Successfully Validated XML Syntax!":
             num_successful += 1
 
@@ -49,7 +52,7 @@ for prompt_id, num_successful in results_by_prompt.items():
     print(f"Num Successful for Prompt {prompt_id}: {num_successful}")
     performance.append(num_successful)
 
-
+# use matplotlib to make bar chart with results 
 plt.bar(y_pos, performance, align='center', alpha=0.5)
 plt.xticks(y_pos, objects)
 plt.ylabel(f"Num Successful Iterations / {NUM_RESP_PER_PROMPT}")
